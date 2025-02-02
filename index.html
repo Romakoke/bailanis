@@ -1,187 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>РОМНҰР</title>
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-image: url('ФОН.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оқушылардың пікірлері</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* Артқы фонға сурет қою */
+            background-image: url('background.jpg'); /* Суреттің файл атын өзгертіңіз */
+            background-size: cover; /* Суреттің бүкіл бетті қамтуы */
+            background-position: center; /* Суреттің ортаға туралануы */
+            background-repeat: no-repeat; /* Суреттің қайталанбауы */
+            height: 100vh; /* Беттің биіктігін толық экранға сәйкестендіру */
+        }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 10px 20px;
-    }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Фонды мөлдір ету */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px; /* Бұрыштарды дөңгелету */
+        }
 
-    header .logo img {
-      width: 40px;
-      height: 40px;
-      vertical-align: middle;
-    }
+        h1, h2 {
+            text-align: center;
+        }
 
-    header .logo a {
-      color: #fff;
-      font-size: 1.5em;
-      font-weight: bold;
-      text-decoration: none;
-      margin-left: 10px;
-    }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
 
-    .contact {
-      padding: 40px;
-      color: #fff;
-      text-align: center;
-    }
+        input, textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
 
-    .section-title {
-      font-size: 2em;
-      margin-bottom: 10px;
-    }
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
 
-    .contact-container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 25px;
-      border-radius: 7px;
-      background-color: rgba(255, 255, 255, 0.9);
-    }
+        button:hover {
+            background-color: #218838;
+        }
 
-    .contact-input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-size: 1em;
-    }
+        #comments {
+            margin-top: 20px;
+        }
 
-    .button {
-      padding: 12px 24px;
-      background-color: #ffd700;
-      border: none;
-      border-radius: 5px;
-      font-size: 1em;
-      color: #333;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+        #commentList {
+            list-style-type: none;
+            padding: 0;
+        }
 
-    .button:hover {
-      background-color: #ffdf00;
-    }
-
-    .messages-container {
-      max-width: 600px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .message {
-      padding: 10px;
-      border-bottom: 1px solid #ddd;
-      margin-bottom: 10px;
-    }
-
-    .message:last-child {
-      border-bottom: none;
-    }
-
-    .message strong {
-      color: #333;
-    }
-
-    .message p {
-      margin: 5px 0;
-      color: #555;
-    }
-  </style>
+        #commentList li {
+            background-color: rgba(249, 249, 249, 0.9); /* Мөлдір фон */
+            margin-bottom: 10px;
+            padding: 10px;
+            border-left: 5px solid #28a745;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <a href="menu.html">THE IQ SHOWDOWN</a>
-    </div>
-  </header>
-
-  <!-- Байланысу бөлімі -->
-  <section class="contact">
-    <h2 class="section-title">Байланыс</h2>
-    <div class="contact-container">
-      <form action="#" class="contact-form" id="contact-form">
-        <div class="contact-group">
-          <input type="text" class="contact-input" name="user_name" placeholder="Аты-жөніңізді енгізіңіз" required autocomplete="off">
+    <div class="container">
+        <h1>Өз пікіріңізді қалдырыңыз</h1>
+        <form id="commentForm">
+            <input type="text" id="name" placeholder="Аты-жөніңіз" required>
+            <textarea id="comment" placeholder="Өз әсеріңізді жазыңыз..." required></textarea>
+            <button type="submit">Жіберу</button>
+        </form>
+        <div id="comments">
+            <h2>Пікірлер</h2>
+            <ul id="commentList"></ul>
         </div>
-        <textarea name="message" class="contact-input" placeholder="Бүгінгі сабақтан алған әсерлеріңізді қалдырыңыз" required></textarea>
-        <button type="submit" class="button">Хабарлама жіберу</button>
-      </form>
     </div>
-  </section>
 
-  <!-- Хабарламаларды көрсету бөлімі -->
-  <div class="messages-container" id="messages-container">
-    <h3>Хабарламалар:</h3>
-    <!-- Хабарламалар осы жерде пайда болады -->
-  </div>
-
-  <script>
-    // Хабарламаларды сақтау және көрсету
-    const messagesContainer = document.getElementById('messages-container');
-    const contactForm = document.getElementById('contact-form');
-
-    // Хабарламаларды localStorage-дан алу
-    function loadMessages() {
-      const messages = JSON.parse(localStorage.getItem('messages')) || [];
-      messagesContainer.innerHTML = '<h3>Хабарламалар:</h3>';
-      messages.forEach((msg) => {
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('message');
-        messageElement.innerHTML = `
-          <strong>${msg.name}</strong>
-          <p>${msg.message}</p>
-        `;
-        messagesContainer.appendChild(messageElement);
-      });
-    }
-
-    // Хабарламаларды localStorage-ға сақтау
-    function saveMessage(name, message) {
-      const messages = JSON.parse(localStorage.getItem('messages')) || [];
-      messages.push({ name, message });
-      localStorage.setItem('messages', JSON.stringify(messages));
-    }
-
-    // Форманы өңдеу
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const name = this.user_name.value;
-      const message = this.message.value;
-
-      // Хабарламаны сақтау
-      saveMessage(name, message);
-
-      // Хабарламаларды қайта жүктеу
-      loadMessages();
-
-      // Форманы тазалау
-      this.reset();
-    });
-
-    // Бет жүктегенде хабарламаларды көрсету
-    loadMessages();
-  </script>
+    <script>
+        document.getElementById('commentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const comment = document.getElementById('comment').value;
+            
+            if (name && comment) {
+                const commentList = document.getElementById('commentList');
+                const newComment = document.createElement('li');
+                newComment.textContent = `${name}: ${comment}`;
+                commentList.appendChild(newComment);
+                
+                // Форманы тазарту
+                document.getElementById('name').value = '';
+                document.getElementById('comment').value = '';
+            }
+        });
+    </script>
 </body>
 </html>
